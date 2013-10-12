@@ -73,6 +73,17 @@ end
      product.errors[:title]
  
   end
+  
+  test "product name must be at least 10 characters" do
+    product = Product.new(title: "my",
+                          description: "yyy",
+                          price: 1,
+                          image_url: "fred.jpg"
+                          )
+    assert product.invalid?
+    assert_equal ["minimun 10 characters"], product.errors[:title]
+  end
+  
  
  
  
