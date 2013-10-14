@@ -75,7 +75,7 @@ end
   end
   
   test "product name must be at least 10 characters" do
-    product = Product.new(title: "my",
+    product = Product.new(title: "my test is this this too long name",
                           description: "yyy",
                           price: 1,
                           image_url: "fred.jpg"
