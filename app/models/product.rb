@@ -7,4 +7,9 @@ class Product < ActiveRecord::Base
     message: 'must be a URL for GIF, JPG or PNG image.'
   }
   validates_length_of :title, minimum: 10 , too_short:"Your name is too short. Pick a longer name"
+ 
+  def self.latest
+    Product.order(:updated_at).last
+  end
 end
+
