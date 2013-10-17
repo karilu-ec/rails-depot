@@ -14,12 +14,14 @@
 <div id="columns">
   <div id="side">
     <ul>
-      <li><a href="#">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="#">Quetions</a></li>
       <li><a href="#">News</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
+    <% if @mytime %>
    <p>Local Time: <%= @mytime %></p>
+    <% end %>
   </div>
     
   <div id="main">
