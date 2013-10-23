@@ -11,6 +11,15 @@ class Cart < ActiveRecord::Base
     current_item
   end
   
+  def decrement_product(line_item_id)
+    current_item = line_items.find(line_item_id)
+    if current_item.quanty > 1
+      current_item.quanty -= 1
+    else
+      current_item.destroy
+    end
+    current_item
+  end
   # My solution for not displaying the empty cart.##
   #def find_products(cart_id)
   #  current_item = line_items.find_by(cart_id: cart_id)
