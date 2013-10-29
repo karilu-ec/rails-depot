@@ -4,21 +4,25 @@ one:
   cart_id: 1
   quanty: 2
   price: 36.00
+  order: one
 
 o1_ruby:
   product_id: 3
   cart_id: 1
   quanty: 2
   price: 49.95
+  order: one
 
 o1_rails:
   product_id: 4
   cart_id: 1
   quanty: 2
   price: 34.95
+  order: one
 
 o2_ruby:
   product_id: 3
   cart_id: 2
   quanty: 1
   price: 49.95
+  order: one

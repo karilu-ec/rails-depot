@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   }
   validates_length_of :title, minimum: 10 , too_short:"Your name is too short. Pick a longer name"
   has_many :line_items
+  has_many :orders, through: :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
  
   def self.latest
