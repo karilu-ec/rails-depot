@@ -68,6 +68,36 @@ class ProductsController < ApplicationController
     if stale?(@latest_order)
       respond_to do |format|
         format.atom
+        format.html
+        format.xml { render( :xml => @product.to_xml(
+          :only => [:title, :updated_at],
+          :skip_types => true,
+          :include => {
+            :orders => {
+              :except => [:created_at, :updated_at],
+              :include => {
+                :line_items => {
+                  :except => [:created_at, :updated_at, :cart_id, :order_id, :product_id]
+                }
+              }
+            }
+           }
+          )
+         )}
+        format.json { render :json => @product.as_json(
+                        :only => [:title, :updated_at],
+                        :include => {
+                          :orders => {
+                            :except => [:created_at, :updated_at],
+                            :include => {
+                              :line_items =>{
+                                :except => [:created_at, :updated_at, :cart_id, :order_id, :product_id]
+                              }
+                            }
+                          }
+                        }
+                      )
+                    }
       end        
     end
   end
