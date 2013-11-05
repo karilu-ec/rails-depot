@@ -8,7 +8,8 @@ class StoreController < ApplicationController
     @products = Product.order(:title)
     @mytime = Time.now
     @count = session[:counter]  
-    @message_counter = "You have accessed the application #{@count} times"  if @count > 5 
+    @message_counter = "You have accessed the application #{@count} times"  if @count > 5
+    @checkout = false
   ## this was part of my solution to not display the cart on the left
   ##@cartemptyFlag = @cart.find_products(@cart.id)
   end

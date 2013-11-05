@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
     end
     
     @order = Order.new
+    @checkout = true
   end
 
   # GET /orders/1/edit
