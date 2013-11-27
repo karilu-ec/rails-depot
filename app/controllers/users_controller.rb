@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]  
+  skip_before_filter :authorize, :only => [:new, :create]
 
   # GET /users
   # GET /users.json
@@ -40,11 +41,14 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    #return and delete parameter
+    current_password = params[:user].delete(:current_password)
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.authenticate(current_password) && @user.update(user_params)
         format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated."}
         format.json { head :no_content }
       else
+        @user.errors.add(:current_password, "is incorrect") unless @user.authenticate(current_password)
         format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
