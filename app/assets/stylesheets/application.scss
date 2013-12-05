@@ -29,6 +29,11 @@ body {
   }
 }
 
+.locale {
+  float: right;
+  margin: -0.25em 0.1em;
+}
+
 #notice {
   color: #000 !important;
   border: 2px solid red;
@@ -103,7 +108,7 @@ body {
     
     form {
       label {
-        width: 5em;
+        width: 10em;
         float: left;
         text-align: right;
         padding-top: 0.2em;
@@ -113,6 +118,7 @@ body {
       
       select, input, textarea {
         margin-left: 0.5em;
+        margin-top: 1em;
       }
       
       .submit {

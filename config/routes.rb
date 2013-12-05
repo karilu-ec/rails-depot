@@ -7,12 +7,7 @@ Depot::Application.routes.draw do
   end
   
   resources :users
-
-  resources :orders
-
-  resources :line_items
-
-  resources :carts
+  
   
   #who_bought is the atom feed for each product
   get "store/index"
@@ -20,11 +15,16 @@ Depot::Application.routes.draw do
     get :who_bought, on: :member
   end
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'store#index', as: 'store'
+# Internationalization set up
+  scope '(:locale)' do
+    resources :orders
+    resources :line_items
+    resources :carts
+    
+    # You can have the root of your site routed with "root"
+    root 'store#index', as: 'store', via: :all
+  end
 
   resources :line_items do
     post 'decrement', on: :member
