@@ -81,3 +81,9 @@ es:
         other: "%{count} errores han impedido que %{model} se guarde"
   
   thanks: "Gracias por su pedido"
+  
+  paytype:
+    Check: "Cheque"
+    Credit Card: "Tarjeta de Credito"
+    Purchase order: "Orden de Compra"
+    
